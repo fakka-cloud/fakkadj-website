@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COTIZAR | Armá tu cotización — FAKKA DJ</title>
+  <meta name="description" content="Dejanos los datos de tu evento y te contactamos al instante. Cotización personalizada de DJ, sonido e iluminación con FAKKA DJ." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bricolage+Grotesque:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/Fakka_Logo_Picos_Blanco.png" alt="FAKKA DJ" /></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="opiniones.html">Opiniones</a></li>
+    <li><a href="clientes.html">Clientes</a></li>
+    <li><a href="ustedes.html">Ustedes</a></li>
+    <li><a href="acercade.html">Acerca de</a></li>
+    <li><a href="faqs.html">FAQs</a></li>
+    <li><a href="cotizar.html" class="nav-cta">Cotizar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="page-hero" style="padding-bottom:2rem">
+  <p class="section-label">Cotizar</p>
+  <h1>Armá tu <span class="accent-word">cotización</span></h1>
+</section>
+
+<section class="pad" style="padding-top:1rem">
+  <div class="container">
+    <div class="cot-grid">
+      <div>
+        <h2 style="font-size:1.8rem;margin-bottom:1.2rem;line-height:1.05;">Dejanos los datos de tu evento y te contactamos al instante</h2>
+        <p class="cot-desc">Completá el formulario y al enviarlo se abre WhatsApp con tu consulta lista para mandar. También podés escribirnos directo por cualquiera de estos medios:</p>
+        <div class="contact-links">
+          <a class="c-link" href="https://wa.me/5491153276773?text=hola%20fakka!%20quiero%20cotizar%20mi%20evento%20%F0%9F%8E%89" target="_blank"><span class="ico">💬</span> WhatsApp · 11 5327-6773</a>
+          <a class="c-link" href="mailto:contacto.fakkadj@gmail.com"><span class="ico">✉️</span> contacto.fakkadj@gmail.com</a>
+          <a class="c-link" href="https://linktr.ee/fakkadj" target="_blank"><span class="ico">🔗</span> Redes · linktr.ee/fakkadj</a>
+        </div>
+      </div>
+
+      <div>
+        <form id="cotizarForm">
+          <div class="form-group">
+            <label>Tu nombre</label>
+            <input type="text" name="nombre" placeholder="Nombre y apellido" required />
+          </div>
+          <div class="form-group">
+            <label>Tipo de evento</label>
+            <select name="tipo_evento">
+              <option value="">Seleccioná...</option>
+              <option>Casamiento</option>
+              <option>Fiesta de 15</option>
+              <option>Cumpleaños</option>
+              <option>Corporativo</option>
+              <option>Egresados</option>
+              <option>Barco privado</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Fecha del evento</label>
+            <input type="date" name="fecha" />
+          </div>
+          <div class="form-group">
+            <label>Zona</label>
+            <select name="zona">
+              <option value="">Seleccioná...</option>
+              <option>CABA</option>
+              <option>Zona Norte</option>
+              <option>Zona Oeste</option>
+              <option>Zona Sur</option>
+              <option>Otra</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea name="mensaje" placeholder="Contanos más sobre tu evento: cantidad de personas, horario, qué servicios te interesan..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent" style="width:100%">Enviar por WhatsApp →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo"><img src="images/Fakka_Logo_Picos_Negro.png" alt="FAKKA DJ" /></div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <a href="mailto:contacto.fakkadj@gmail.com">contacto.fakkadj@gmail.com</a>
+        <a href="https://wa.me/5491153276773" target="_blank">WhatsApp · 11 5327-6773</a>
+        <a href="https://linktr.ee/fakkadj" target="_blank">Redes sociales · linktr.ee/fakkadj</a>
+      </div>
+      <div class="footer-col">
+        <h5>Páginas</h5>
+        <a href="servicios.html">Servicios</a>
+        <a href="opiniones.html">Opiniones</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="faqs.html">FAQs</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FAKKA DJ · Buenos Aires, Argentina</p>
+      <ul class="footer-nav">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="cotizar.html">Cotizar</a></li>
+        <li><a href="acercade.html">Acerca de</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
