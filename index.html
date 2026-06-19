@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAKKA DJ — Experiencia Integral de Eventos</title>
+  <meta name="description" content="Servicio profesional de DJ, sonido e iluminación para casamientos, corporativos, fiestas de 15 y privadas en Buenos Aires." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f5f5;
+      --gray: #888;
+      --light-gray: #1a1a1a;
+      --accent: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--white);
+      color: var(--black) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+    }
+
+    .nav-cta:hover { background: #ddd; color: var(--black) !important; }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: radial-gradient(ellipse at center top, #1a1a1a 0%, #0a0a0a 70%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--gray);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.75rem, 2vw, 1rem);
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      color: var(--gray);
+      text-transform: uppercase;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .btn-primary:hover {
+      background: #ddd;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    /* PILARES */
+    .pilares {
+      background: var(--light-gray);
+    }
+
+    .pilares-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .pilar {
+      background: var(--black);
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pilar-number {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .pilar h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .pilar p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    /* SERVICIOS */
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .servicio-card {
+      background: var(--light-gray);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2.5rem 2rem;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .servicio-card:hover {
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .servicio-icon {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .servicio-card h3 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .servicio-card p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    /* EVENTOS */
+    .eventos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .evento-card {
+      background: var(--light-gray);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .evento-card:hover {
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .evento-card .icon { font-size: 1.8rem; margin-bottom: 1rem; }
+
+    .evento-card h4 {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .evento-card p {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* OPINIONES */
+    .opiniones {
+      background: var(--light-gray);
+    }
+
+    .opiniones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .opinion-card {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      border-radius: 4px;
+    }
+
+    .opinion-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .opinion-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .opinion-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .opinion-type {
+      font-size: 0.7rem;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+    }
+
+    .opinion-text {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #ccc;
+    }
+
+    /* FAQs */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      text-align: left;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-question:hover { color: #ddd; }
+
+    .faq-question .chevron {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-answer p {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--gray);
+    }
+
+    /* COTIZAR */
+    .cotizar {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .cotizar .section-label { color: #666; }
+    .cotizar .section-title { color: var(--black); }
+
+    .cotizar-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .cotizar-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .contact-link:hover { background: #222; }
+
+    .contact-link .link-icon { font-size: 1.3rem; }
+
+    /* FORM */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      background: #f9f9f9;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--black);
+      background: #fff;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .btn-black {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-black:hover { background: #222; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--gray);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.98); padding: 1.5rem; gap: 1.2rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 7rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+
+      .cotizar-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">FAKKA DJ</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#faqs">FAQs</a></li>
+    <li><a href="#cotizar" class="nav-cta">Cotizar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <p class="hero-eyebrow">Buenos Aires · Argentina</p>
+  <h1 class="hero-title">
+    <span>Integral</span>
+    <span>Experiencia</span>
+  </h1>
+  <p class="hero-subtitle">DJ · Sonido · Iluminación</p>
+  <div class="hero-tags">
+    <span class="hero-tag">Eventos Sociales</span>
+    <span class="hero-tag">Corporativos</span>
+    <span class="hero-tag">Eventos Privados</span>
+  </div>
+  <div class="hero-buttons">
+    <a href="#cotizar" class="btn btn-primary">Cotizá tu evento</a>
+    <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pilares" id="sobre">
+  <div class="container">
+    <p class="section-label">Por qué elegirnos</p>
+    <div class="pilares-grid">
+      <div class="pilar">
+        <p class="pilar-number">01</p>
+        <h3>Profesionalismo</h3>
+        <p>Su trabajo se caracteriza por la excelencia y el cuidado de cada detalle, tratando a cada cliente de forma exclusiva.</p>
+      </div>
+      <div class="pilar">
+        <p class="pilar-number">02</p>
+        <h3>Experiencia</h3>
+        <p>Con más de 8 años de experiencia en eventos sociales, corporativos y fiestas privadas, FAKKA DJ transforma cualquier celebración en una experiencia única.</p>
+      </div>
+      <div class="pilar">
+        <p class="pilar-number">03</p>
+        <h3>Conexión con el público</h3>
+        <p>Más allá de poner música, creamos momentos épicos. Desde una playlist personalizada hasta un karaoke improvisado con los hits más icónicos de la música latina.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Nuestros servicios</h2>
+
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="servicio-icon">🎧</div>
+        <h3>Servicio de DJ</h3>
+        <p>Servicio profesional de DJ para todo tipo de eventos y géneros musicales. La música es 100% personalizable.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">🔊</div>
+        <h3>Sonido</h3>
+        <p>Sistema de sonido con cobertura para eventos de hasta 1.500 personas.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">💡</div>
+        <h3>Iluminación</h3>
+        <p>Iluminación profesional audiorítimica para eventos sociales y corporativos.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">🤝</div>
+        <h3>Encuentro previo</h3>
+        <p>Cada fiesta es única. Nos reunimos con cada cliente para conocer sus gustos musicales, el estilo del evento y coordinar cada detalle técnico.</p>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom: 1.5rem;">Tipos de eventos</p>
+    <div class="eventos-grid">
+      <div class="evento-card">
+        <div class="icon">💍</div>
+        <h4>Casamientos</h4>
+        <p>Una experiencia única que acompaña cada momento</p>
+      </div>
+      <div class="evento-card">
+        <div class="icon">🏢</div>
+        <h4>Corporativos</h4>
+        <p>Acompañamos el evento de tu empresa</p>
+      </div>
+      <div class="evento-card">
+        <div class="icon">🎉</div>
+        <h4>Fiestas privadas</h4>
+        <p>Cualquier excusa es buena para celebrar</p>
+      </div>
+      <div class="evento-card">
+        <div class="icon">🌟</div>
+        <h4>Fiestas de 15</h4>
+        <p>Con una selección musical hecha a medida</p>
+      </div>
+      <div class="evento-card">
+        <div class="icon">🎓</div>
+        <h4>Egresados</h4>
+        <p>Todos los temazos que no pueden faltar</p>
+      </div>
+      <div class="evento-card">
+        <div class="icon">⛵</div>
+        <h4>Barcos privados</h4>
+        <p>Celebraciones sobre el agua</p>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top: 3rem; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; color: var(--gray);">Sea lo que sea, la manera en la que <span style="color:var(--white)">lo celebres importa.</span></p>
+  </div>
+</section>
+
+<!-- OPINIONES -->
+<section class="opiniones" id="opiniones">
+  <div class="container">
+    <p class="section-label">Lo que dicen</p>
+    <h2 class="section-title">Opiniones</h2>
+
+    <div class="opiniones-grid">
+      <div class="opinion-card">
+        <div class="opinion-header">
+          <div class="opinion-avatar">F</div>
+          <div>
+            <p class="opinion-name">Fede</p>
+            <p class="opinion-type">Cumpleaños</p>
+          </div>
+        </div>
+        <p class="opinion-text">"Muy buena reey. La rompiste toda postaa. Fakkadj x siempre ❤️"</p>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-header">
+          <div class="opinion-avatar">S</div>
+          <div>
+            <p class="opinion-name">Sol y Martín</p>
+            <p class="opinion-type">Cumpleaños</p>
+          </div>
+        </div>
+        <p class="opinion-text">"Una experiencia increíble. Cada detalle fue perfecto, la música estuvo exactamente como la imaginábamos."</p>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-header">
+          <div class="opinion-avatar">M</div>
+          <div>
+            <p class="opinion-name">Mariana y Enzo</p>
+            <p class="opinion-type">Casamiento · casamientos.com.ar</p>
+          </div>
+        </div>
+        <p class="opinion-text">"Lo recomendamos con los ojos cerrados. Profesional, puntual y supo leer perfectamente el ambiente."</p>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-header">
+          <div class="opinion-avatar">E</div>
+          <div>
+            <p class="opinion-name">Emi</p>
+            <p class="opinion-type">Fiesta de 15</p>
+          </div>
+        </div>
+        <p class="opinion-text">"La fiesta estuvo 10/10. La música fue increíble y todo el mundo bailó toda la noche."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section id="faqs">
+  <div class="container" style="max-width: 750px;">
+    <p class="section-label">Preguntas frecuentes</p>
+    <h2 class="section-title">FAQs</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question">¿Qué servicios ofrecen? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>Servicio de DJ, iluminación audiorítimica y sistema de sonido. También contamos con servicios adicionales opcionales como fotografía, catering y animación del evento.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Cuánto dura el servicio? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>No hay un tiempo de duración definido para el servicio. Depende de las necesidades de cada cliente. Hemos trabajado en eventos de hasta 12 horas.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Necesitan WiFi sí o sí? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>No, no es un requisito obligatorio para la prestación del servicio.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Les puedo pasar una playlist? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>Podés armar y enviarnos todas las playlists que quieras a través de Spotify, YouTube Music u otras plataformas.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Puedo pedir temas durante la fiesta? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>Sí, se pueden solicitar canciones durante el evento, luego de las reuniones de planificación previas.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Qué estilos de música tocan? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>La música es 100% personalizable. Cumbia, reggaeton, rock, pop, disco y mucho más. Nos adaptamos al estilo de cada evento y cliente.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿En qué zonas trabajan? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>Gran Buenos Aires: CABA, Zona Norte, Zona Oeste y Zona Sur.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Firman contrato? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>Sí, realizamos un contrato con cláusulas por escrito una vez aceptado el presupuesto.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Piden seña? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>Sí, requerimos una seña del 50%. El saldo restante se puede abonar en hasta 3 cuotas.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Hacen factura? <span class="chevron">▾</span></button>
+        <div class="faq-answer"><p>Sí, actualmente emitimos factura C.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COTIZAR -->
+<section class="cotizar" id="cotizar">
+  <div class="container">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Cotizá tu evento</h2>
+
+    <div class="cotizar-inner">
+      <div>
+        <p class="cotizar-desc">Envianos los datos de tu evento y recibí una cotización personalizada. En un minuto te respondemos.</p>
+
+        <div class="contact-links">
+          <a href="https://wa.me/5491153276773?text=Hola%20Fakka!%20Quiero%20cotizar%20mi%20evento%20🎉" class="contact-link" target="_blank">
+            <span class="link-icon">💬</span>
+            WhatsApp: 11 5327-6773
+          </a>
+          <a href="mailto:contacto.fakkadj@gmail.com" class="contact-link">
+            <span class="link-icon">✉️</span>
+            contacto.fakkadj@gmail.com
+          </a>
+          <a href="https://linktr.ee/fakkadj" class="contact-link" target="_blank">
+            <span class="link-icon">🔗</span>
+            Redes sociales · linktr.ee/fakkadj
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <form id="cotizarForm">
+          <div class="form-group">
+            <label>Tu nombre</label>
+            <input type="text" name="nombre" placeholder="Juan García" required />
+          </div>
+          <div class="form-group">
+            <label>Tipo de evento</label>
+            <select name="tipo_evento">
+              <option value="">Seleccioná...</option>
+              <option>Casamiento</option>
+              <option>Fiesta de 15</option>
+              <option>Cumpleaños</option>
+              <option>Corporativo</option>
+              <option>Egresados</option>
+              <option>Barco privado</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Fecha del evento</label>
+            <input type="date" name="fecha" />
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea name="mensaje" placeholder="Contanos más sobre tu evento..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-black">Enviar por WhatsApp →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">FAKKA DJ</span>
+    <ul class="footer-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+      <li><a href="https://linktr.ee/fakkadj" target="_blank">Redes</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 FAKKA DJ · Buenos Aires</p>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // FAQs accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Form → WhatsApp
+  document.getElementById('cotizarForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombre = this.nombre.value || '';
+    const tipo = this.tipo_evento.value || '';
+    const fecha = this.fecha.value || '';
+    const mensaje = this.mensaje.value || '';
+    const text = `Hola Fakka! Quiero cotizar mi evento 🎉\n\nNombre: ${nombre}\nTipo: ${tipo}\nFecha: ${fecha}\nDetalle: ${mensaje}`;
+    window.open('https://wa.me/5491153276773?text=' + encodeURIComponent(text), '_blank');
+  });
+</script>
+
+</body>
+</html>
