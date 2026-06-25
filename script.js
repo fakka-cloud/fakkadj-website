@@ -3,17 +3,23 @@
   // Menú hamburguesa
   var burger = document.getElementById('hamburger');
   var links = document.getElementById('navLinks');
+  var overlay = document.getElementById('navOverlay');
+  function closeMenu() {
+    burger.classList.remove('open');
+    links.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+  }
   if (burger && links) {
     burger.addEventListener('click', function () {
+      var opening = !links.classList.contains('open');
       burger.classList.toggle('open');
       links.classList.toggle('open');
+      if (overlay) overlay.classList.toggle('open');
     });
     links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        burger.classList.remove('open');
-        links.classList.remove('open');
-      });
+      a.addEventListener('click', closeMenu);
     });
+    if (overlay) overlay.addEventListener('click', closeMenu);
   }
 
   // Acordeón FAQ
