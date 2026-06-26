@@ -218,6 +218,9 @@ section { position: relative; }
   padding: 0.45rem 1rem; border-radius: 2px;
 }
 .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.hero-microcopy { margin-top: 0.8rem; font-size: 0.8rem; color: rgba(246,246,246,0.55); letter-spacing: 0.04em; }
+.hero-social-proof { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-top: 1.4rem; font-family: var(--head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(246,246,246,0.7); }
+.hero-social-proof .sep { color: rgba(246,246,246,0.3); }
 
 /* page hero (interior, sin foto a pantalla completa) */
 .page-hero {
