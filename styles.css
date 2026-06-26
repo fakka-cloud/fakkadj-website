@@ -9,8 +9,8 @@
   --dim: #6f6f6f;
   --card: #161616;
   --line: rgba(255,255,255,0.08);
-  --accent: #f0523d;
-  --accent-hover: #d8432f;
+  --accent: #2878f0;
+  --accent-hover: #1a64d8;
   --head: 'Bricolage Grotesque', sans-serif;
   --body: 'Space Grotesk', sans-serif;
 }
@@ -452,6 +452,46 @@ section { position: relative; }
 }
 .form-group select option { background: var(--black); }
 
+/* ============ LOGOS MARQUEE ============ */
+.marquee-section { margin-bottom: 3rem; }
+.marquee-section .section-label { margin-bottom: 1.2rem; }
+.marquee-wrap {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  padding: 1.6rem 0;
+}
+.marquee-wrap::before,
+.marquee-wrap::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+  pointer-events: none;
+}
+.marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--card), transparent); }
+.marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--card), transparent); }
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: max-content;
+  animation: marquee-scroll 22s linear infinite;
+}
+.marquee-track img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
 /* ============ FOOTER ============ */
 footer {
   background: #1a3a6e;
@@ -460,6 +500,15 @@ footer {
   position: relative;
   overflow: hidden;
 }
+footer::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+footer > * { position: relative; z-index: 1; }
 .footer-wave {
   display: block;
   width: 100%;
