@@ -178,7 +178,7 @@ section { position: relative; }
   position: absolute; inset: 0;
   background-image: var(--hero-img);
   background-size: cover;
-  background-position: center;
+  background-position: 50% 25%;
   z-index: -2;
 }
 .hero::after {
@@ -218,9 +218,22 @@ section { position: relative; }
   padding: 0.45rem 1rem; border-radius: 2px;
 }
 .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-.hero-microcopy { margin-top: 0.8rem; font-size: 0.8rem; color: rgba(246,246,246,0.55); letter-spacing: 0.04em; }
-.hero-social-proof { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-top: 1.4rem; font-family: var(--head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(246,246,246,0.7); }
-.hero-social-proof .sep { color: rgba(246,246,246,0.3); }
+
+/* ---- Proof strip ---- */
+.proof-strip {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.2rem; flex-wrap: wrap;
+  background: #111; border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 1rem 2rem;
+  font-family: var(--head); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: rgba(246,246,246,0.55);
+}
+.proof-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+/* ---- Section wave divider ---- */
+.section-wave { line-height: 0; display: block; }
+.section-wave svg { display: block; width: 100%; }
 
 /* page hero (interior, sin foto a pantalla completa) */
 .page-hero {
