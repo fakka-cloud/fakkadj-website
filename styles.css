@@ -525,11 +525,14 @@ section { position: relative; }
 }
 .marquee-track img {
   height: 48px;
+  max-height: 48px;
   width: auto;
+  max-width: none;
   object-fit: contain;
   opacity: 0.85;
   filter: brightness(0) invert(1);
   flex-shrink: 0;
+  display: inline-block;
 }
 @keyframes marquee-scroll {
   0%   { transform: translateX(0); }
