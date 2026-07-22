@@ -62,6 +62,11 @@
 
 <section class="pad" style="padding-top:0">
   <div class="container">
+    <div class="faq-search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="faq-search" type="text" placeholder="Buscá una pregunta..." autocomplete="off" />
+    </div>
+    <p id="faq-no-results">No encontramos resultados para tu búsqueda.</p>
     <div class="faq-list">
 
       <div class="faq-item">
@@ -153,5 +158,22 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="chat.js"></script>
+<script>
+  const faqSearch = document.getElementById('faq-search');
+  const faqItems  = document.querySelectorAll('.faq-item');
+  const noResults = document.getElementById('faq-no-results');
+  faqSearch.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    let found = 0;
+    faqItems.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const match = !q || text.includes(q);
+      item.style.display = match ? '' : 'none';
+      if (match) found++;
+    });
+    noResults.style.display = found === 0 ? 'block' : 'none';
+  });
+</script>
 </body>
 </html>
