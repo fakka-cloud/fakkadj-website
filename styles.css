@@ -534,7 +534,7 @@ section { position: relative; }
 /* ============ ACERCA / timeline ============ */
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
 }
 .about-item .big {
@@ -671,13 +671,17 @@ section { position: relative; }
   height: 48px;
   max-height: 48px;
   width: auto;
-  max-width: none;
+  max-width: 160px;
   object-fit: contain;
   opacity: 0.8;
   filter: brightness(0) invert(1);
   flex-shrink: 0;
   display: inline-block;
   transition: opacity 0.2s;
+}
+.marquee-track img.logo-solid {
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 .marquee-track:hover img { opacity: 1; }
 @keyframes marquee-scroll {
