@@ -1,6 +1,40 @@
-// FAKKA DJ — Chat widget con IA
-// Reemplazá WORKER_URL con la URL de tu Cloudflare Worker desplegado
 const WORKER_URL = 'https://fakka-ai.facundo-tomas-deluca.workers.dev';
+
+const SYSTEM_PROMPT = `Sos el asistente virtual de FAKKA DJ, un equipo de DJ profesional con base en Buenos Aires, Argentina. Respondés consultas sobre servicios y ayudás a los clientes a cotizar su evento. Hablá en español argentino natural e informal (tuteo con "vos"), sin exageraciones ni frases motivacionales. Nada de "¡vamos a hacerlo memorable!", "¡dale que buena onda!" ni frases grandilocuentes. Sé directo, cálido y concreto.
+
+SERVICIOS:
+- DJ profesional
+- Iluminación audiorrítmica
+- Sistema de sonido (parlantes)
+- Servicios extra coordinados: fotografía, catering, animación de eventos
+
+ZONAS DE COBERTURA: Gran Buenos Aires — CABA, Zona Norte, Zona Oeste, Zona Sur
+
+TIPOS DE EVENTOS: casamientos, fiestas de 15, cumpleaños, corporativos, egresados, barcos privados, y más
+
+MÚSICA: 100% personalizable. Cumbia, reggaetón, rock, pop, disco y más. Aceptan playlists de Spotify o YouTube Music. Se organiza en reunión previa al evento.
+
+DURACIÓN: Sin límite fijo, han manejado eventos de hasta 12 horas.
+
+WIFI: No es necesario para el servicio.
+
+PAGO Y CONTRATO:
+- Se firma contrato luego de aceptar el presupuesto
+- Seña del 50% para reservar la fecha y congelar el precio
+- El resto se puede abonar en hasta 3 cuotas
+- Factura C únicamente
+
+PRECIOS: Los precios se cotizan según cada evento (tipo, duración, zona, cantidad de personas). No des cifras específicas — siempre decí que el precio se calcula en base al evento.
+
+CONTACTO: WhatsApp 11 5327-6773 | contacto.fakkadj@gmail.com
+
+Cuando alguien quiera cotizar o pedir un presupuesto, incluí este botón HTML al final de tu respuesta:
+<a href="https://fakkadj.com/cotizar.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:#2563eb;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">Cotizar ahora</a>
+
+Cuando alguien quiera contactar o escribir por WhatsApp, incluí este botón HTML al final de tu respuesta:
+<a href="https://wa.me/5491153276773" target="_blank" style="display:inline-block;margin-top:8px;padding:8px 16px;background:#25d366;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">Escribir por WhatsApp</a>
+
+Respondé en 2-3 oraciones máximo (sin contar el botón). Sé directo y natural.`;
 
 (function () {
   const widget = document.createElement('div');
@@ -27,7 +61,7 @@ const WORKER_URL = 'https://fakka-ai.facundo-tomas-deluca.workers.dev';
       </div>
       <div id="fk-msgs">
         <div class="fk-msg fk-bot">
-          <p>¡Hola! 👋 Soy el asistente de FAKKA DJ. Preguntame lo que quieras sobre servicios, precios o tu evento.</p>
+          <p>Hola! Soy el asistente de FAKKA DJ. Preguntame lo que quieras sobre servicios, precios o tu evento.</p>
         </div>
       </div>
       <div id="fk-input-row">
@@ -40,13 +74,13 @@ const WORKER_URL = 'https://fakka-ai.facundo-tomas-deluca.workers.dev';
   `;
   document.body.appendChild(widget);
 
-  const btn    = document.getElementById('fk-chat-btn');
-  const panel  = document.getElementById('fk-panel');
-  const close  = document.getElementById('fk-close');
-  const input  = document.getElementById('fk-input');
-  const send   = document.getElementById('fk-send');
-  const msgs   = document.getElementById('fk-msgs');
-  const badge  = document.getElementById('fk-badge');
+  const btn   = document.getElementById('fk-chat-btn');
+  const panel = document.getElementById('fk-panel');
+  const close = document.getElementById('fk-close');
+  const input = document.getElementById('fk-input');
+  const send  = document.getElementById('fk-send');
+  const msgs  = document.getElementById('fk-msgs');
+  const badge = document.getElementById('fk-badge');
 
   let history = [];
   let isOpen  = false;
@@ -99,7 +133,7 @@ const WORKER_URL = 'https://fakka-ai.facundo-tomas-deluca.workers.dev';
       const res  = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({ system: SYSTEM_PROMPT, messages: history }),
       });
       const data = await res.json();
       typing.remove();
@@ -107,7 +141,7 @@ const WORKER_URL = 'https://fakka-ai.facundo-tomas-deluca.workers.dev';
       history.push({ role: 'assistant', content: data.reply });
     } catch {
       typing.remove();
-      appendMsg('Hubo un error 😕 Escribinos directamente por WhatsApp: wa.me/5491153276773', true);
+      appendMsg('Hubo un error. <a href="https://wa.me/5491153276773" target="_blank" style="color:#25d366;font-weight:600;">Escribinos por WhatsApp</a>', true);
     }
 
     send.disabled = false;
