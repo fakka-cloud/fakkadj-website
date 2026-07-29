@@ -1,6 +1,6 @@
 // FAKKA DJ — Chat widget con IA
 // Reemplazá WORKER_URL con la URL de tu Cloudflare Worker desplegado
-const WORKER_URL = 'https://fakka-ai.TU_SUBDOMINIO.workers.dev';
+const WORKER_URL = 'https://fakka-ai.facundo-tomas-deluca.workers.dev';
 
 (function () {
   const widget = document.createElement('div');
