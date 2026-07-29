@@ -68,7 +68,7 @@ const WORKER_URL = 'https://fakka-ai.facundo-tomas-deluca.workers.dev';
     const div = document.createElement('div');
     div.className = 'fk-msg ' + (isBot ? 'fk-bot' : 'fk-user');
     const p = document.createElement('p');
-    p.textContent = text;
+    p.innerHTML = text;
     div.appendChild(p);
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
