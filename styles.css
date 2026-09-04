@@ -277,18 +277,26 @@ section { position: relative; }
 }
 .hero-title {
   font-size: clamp(3.6rem, 13vw, 10.5rem);
-  font-weight: 200; font-style: italic; line-height: 0.88;
-  text-transform: uppercase; margin-bottom: 1.8rem;
+  line-height: 0.92; margin-bottom: 1.8rem;
   text-shadow: 0 4px 60px rgba(0,0,0,0.6);
   letter-spacing: -0.02em;
 }
 .hero-title span { display: block; }
+.hero-title span:first-child {
+  font-weight: 600; font-style: normal; text-transform: uppercase;
+}
+.hero-title span:last-child {
+  font-weight: 200; font-style: italic; text-transform: lowercase;
+}
 .hero-sub {
   font-family: var(--body);
   font-size: clamp(0.7rem, 1.8vw, 0.92rem);
   font-weight: 600; letter-spacing: 0.42em;
   color: rgba(255,253,195,0.75); text-transform: uppercase; margin-bottom: 3rem;
 }
+.split-h2 span { display: block; }
+.split-h2 span:first-child { font-weight: 600; font-style: normal; }
+.split-h2 span:last-child { font-weight: 200; font-style: italic; }
 .hero-tags {
   display: flex; gap: 0.7rem; flex-wrap: wrap;
   justify-content: center; margin-bottom: 3rem;
