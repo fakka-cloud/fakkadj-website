@@ -102,7 +102,7 @@ Respondé en 2-3 oraciones máximo (sin contar el botón). Sé directo y natural
     const div = document.createElement('div');
     div.className = 'fk-msg ' + (isBot ? 'fk-bot' : 'fk-user');
     const p = document.createElement('p');
-    p.innerHTML = text;
+    if (isBot) p.innerHTML = text; else p.textContent = text;
     div.appendChild(p);
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
@@ -133,7 +133,7 @@ Respondé en 2-3 oraciones máximo (sin contar el botón). Sé directo y natural
       const res  = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ system: SYSTEM_PROMPT, messages: history }),
+        body: JSON.stringify({ messages: history }),
       });
       const data = await res.json();
       typing.remove();
