@@ -683,10 +683,10 @@ section { position: relative; }
   animation: marquee-scroll 22s linear infinite;
 }
 .marquee-track img {
-  height: 48px;
-  max-height: 48px;
+  height: calc(var(--h, 48px) * var(--s, 1));
+  max-height: none;
   width: auto;
-  max-width: 160px;
+  max-width: none;
   object-fit: contain;
   opacity: 0.8;
   filter: brightness(0) invert(1);
@@ -761,6 +761,7 @@ footer > * { position: relative; z-index: 1; }
 
 /* ============ MOBILE ============ */
 @media (max-width: 880px) {
+  .marquee-track { --s: 0.75; }
   nav { padding: 0 1.2rem; height: 56px; }
   .nav-links {
     display: none; flex-direction: column; position: fixed;
